@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_recipe/models/recipe.dart';
+import 'package:flutter_recipe/widgets/top_bezier_container.dart';
 import 'top_custom_clipper.dart';
 
 class AddRecipeScreen extends StatefulWidget {
@@ -30,19 +31,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipPath(
-                clipper: TopCustomClipper(),
-                child: Container(
-                  height: 150,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                      colors: [Colors.orange, Colors.blue],
-                    ),
-                  ),
-                ),
-              ),
+              const TopBezierContainer(),
               const Padding(
                 padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
                 child: Text(
