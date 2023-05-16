@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_recipe/models/recipe.dart';
 import 'package:flutter_recipe/widgets/top_bezier_container.dart';
-import 'top_custom_clipper.dart';
 
 class AddRecipeScreen extends StatefulWidget {
   const AddRecipeScreen({Key? key}) : super(key: key);
@@ -26,6 +25,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color(0xffF2F3AE),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -99,6 +99,8 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color(0xffD58936),
+          foregroundColor: const Color(0xff69140E),
           child: const Icon(Icons.save),
           onPressed: () {
             recipeCollectionRef.add(

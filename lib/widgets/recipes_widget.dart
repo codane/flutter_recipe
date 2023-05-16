@@ -22,10 +22,11 @@ class _RecipesWidgetState extends ConsumerState<RecipesWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffF2F3AE),
       body: ref.watch(recipesProvider).when(
           data: (recipes) {
             return SizedBox(
-              height: 400,
+              height: 300,
               width: double.infinity,
               child: ScrollSnapList(
                 itemBuilder: (context, index) {
@@ -41,11 +42,11 @@ class _RecipesWidgetState extends ConsumerState<RecipesWidget> {
                                     RecipeDetails(recipe: recipe)));
                       },
                       child: SizedBox(
-                        height: 400,
+                        height: 200,
                         child: Column(
                           children: [
                             SizedBox(
-                                height: 330,
+                                height: 230,
                                 width: 250,
                                 child: Image.network(
                                   recipe.url,

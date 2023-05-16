@@ -25,7 +25,7 @@ class RecipeDetails extends StatelessWidget {
               builder: (context, scrollController) {
                 return Container(
                   decoration: const BoxDecoration(
-                    color: Colors.amber,
+                    color: Color(0xffD58936),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
