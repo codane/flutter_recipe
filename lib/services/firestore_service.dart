@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_recipe/models/recipe.dart';
+import 'package:flutter_recipe/models/recipe_model.dart';
 
 class FirestoreService {
   // ADD

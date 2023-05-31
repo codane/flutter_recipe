@@ -13,8 +13,9 @@ class AuthController {
   AuthController({required AuthRepository authRepository})
       : _authRepository = authRepository;
 
-  void registerUser({required String email, required String password}) {
-    _authRepository.registerUser(email: email, password: password);
+  void registerUser({required String username,required String email, required String password}) async {
+   _authRepository.registerUser(username: username, email: email, password: password);
+
   }
 
   void loginUser({required String email, required String password}) {

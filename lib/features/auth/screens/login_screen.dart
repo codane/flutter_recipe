@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe/features/auth/controller/auth_controller.dart';
+import 'package:flutter_recipe/features/auth/screens/register_screen.dart';
 import 'package:flutter_recipe/widgets/home_screen.dart';
 import 'package:flutter_recipe/widgets/top_bezier_container.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -28,16 +28,54 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TopBezierContainer(),
-              TextField(controller: _emailController,),
-              TextField(controller: _passwordController,),
+              const SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  labelText: "Email",
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 20,),
+              TextField(
+                controller: _passwordController,
+                decoration: const InputDecoration(
+                  labelText: "Password",
+                  border: OutlineInputBorder(),
+                ),
+                obscureText: true,
+              ),
               OutlinedButton(
                 onPressed: () {
-                  ref.read(authControllerProvider).loginUser(email: _emailController.text.trim(), password: _passwordController.text.trim());
-                  if(isUserLoggedIn) {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) => const HomeScreen()),),);
-                  } 
-                } ,
+                  ref.read(authControllerProvider).loginUser(
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim());
+                  if (isUserLoggedIn) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const HomeScreen()),
+                      ),
+                    );
+                  }
+                },
                 child: const Text("Login"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  const Text("Not registered?"),
+                  TextButton(onPressed: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) => const RegisterScreen()),),);
+                  }, 
+                  child: const Text("Register here"),
+                  ),
+                ],
+
               ),
             ],
           ),

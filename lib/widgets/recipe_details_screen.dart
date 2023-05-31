@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_recipe/models/recipe.dart';
+import 'package:flutter_recipe/models/recipe_model.dart';
 
 class RecipeDetails extends StatelessWidget {
   const RecipeDetails({Key? key, required this.recipe}) : super(key: key);
@@ -59,13 +59,13 @@ class RecipeDetails extends StatelessWidget {
                           const SizedBox(height: 10),
                           const Divider(thickness: 2),
                           const Text(
-                            "Ingridients",
+                            "Ingredients",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            recipe.ingridients,
+                            recipe.ingredients,
                             style: const TextStyle(fontSize: 15),
                           ),
                           const SizedBox(

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_recipe/widgets/recipe_details_screen.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_recipe/models/recipe.dart';
+import 'package:flutter_recipe/models/recipe_model.dart';
 
 class RecipesWidget extends ConsumerStatefulWidget {
   const RecipesWidget({Key? key}) : super(key: key);

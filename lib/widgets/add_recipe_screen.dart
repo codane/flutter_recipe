@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_recipe/models/recipe.dart';
+import 'package:flutter_recipe/models/recipe_model.dart';
 import 'package:flutter_recipe/widgets/top_bezier_container.dart';
 
 class AddRecipeScreen extends StatefulWidget {
@@ -12,7 +13,7 @@ class AddRecipeScreen extends StatefulWidget {
 
 class _AddRecipeScreenState extends State<AddRecipeScreen> {
   final TextEditingController titleController = TextEditingController();
-  final TextEditingController ingridientsController = TextEditingController();
+  final TextEditingController ingredientsController = TextEditingController();
   final TextEditingController preparationController = TextEditingController();
   final TextEditingController urlController = TextEditingController();
   final recipeCollectionRef = FirebaseFirestore.instance
@@ -74,7 +75,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
                 child: TextField(
                   maxLines: 3,
-                  controller: ingridientsController,
+                  controller: ingredientsController,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), labelText: "Ingridients"),
                 ),
@@ -103,14 +104,14 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           foregroundColor: const Color(0xff69140E),
           child: const Icon(Icons.save),
           onPressed: () {
-            recipeCollectionRef.add(
-              Recipe(
-                  title: titleController.text,
-                  ingridients: ingridientsController.text,
-                  preparation: preparationController.text,
-                  url: urlController.text),
-            );
-            Navigator.pop(context);
+            // recipeCollectionRef.add(
+            //   RecipeModel(
+            //       title: titleController.text,
+            //       ingredients: ingredientsController.text,
+            //       preparation: preparationController.text,
+            //       pictureUrl: urlController.text),
+            // );
+            // Navigator.pop(context);
           },
         ),
       ),
