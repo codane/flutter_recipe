@@ -7,12 +7,12 @@ class BottomCustomClipper extends CustomClipper<Path> {
     final height = size.height;
 
     return Path()
-    ..moveTo(0, height * 0.5)
-    ..quadraticBezierTo(width * 0.08, 0, width * 0.22, height * 0.2)
-    ..quadraticBezierTo(width * 0.32, height * 0.4, width * 0.41, height * 0.2)
-    ..quadraticBezierTo(width * 0.51, 0, width * 0.61, height * 0.2)
-    ..quadraticBezierTo(width * 0.7, height * 0.4, width * 0.8, height * 0.2)
-    ..quadraticBezierTo(width * 0.92, 0, width, height * 0.4)
+    ..moveTo(0, height * 0.3)
+    ..quadraticBezierTo(width * 0.14, 0, width * 0.25, height * 0.2)
+    ..quadraticBezierTo(width * 0.32, height * 0.4, width * 0.39, height * 0.2)
+    ..quadraticBezierTo(width * 0.48, 0, width * 0.59, height * 0.2)
+    ..quadraticBezierTo(width * 0.67, height * 0.4, width * 0.75, height * 0.2)
+    ..quadraticBezierTo(width * 0.85, 0, width, height * 0.3)
     ..lineTo(width, height)
     ..lineTo(0, height)
     ..close();

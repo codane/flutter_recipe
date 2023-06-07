@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_recipe/models/recipe_model.dart';
@@ -67,7 +66,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               const Padding(
                 padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
                 child: Text(
-                  "Ingridients",
+                  "Ingredients",
                   style: TextStyle(fontSize: 25),
                 ),
               ),
@@ -77,7 +76,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                   maxLines: 3,
                   controller: ingredientsController,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Ingridients"),
+                      border: OutlineInputBorder(), labelText: "Ingredients"),
                 ),
               ),
               const Padding(
@@ -101,7 +100,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color(0xffD58936),
-          foregroundColor: const Color(0xff69140E),
+          foregroundColor: const Color(0xffF2F3AE),
           child: const Icon(Icons.save),
           onPressed: () {
             // recipeCollectionRef.add(

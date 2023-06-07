@@ -22,10 +22,6 @@ class MyApp extends ConsumerWidget {
     final authStatus = ref.watch(authStatusProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: authStatus.when(
         data: (user) {
           if(user != null) {

@@ -21,69 +21,83 @@ class _RecipesWidgetState extends ConsumerState<RecipesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffF2F3AE),
-      body: ref.watch(recipesProvider).when(
-          data: (recipes) {
-            return SizedBox(
-              height: 300,
-              width: double.infinity,
-              child: ScrollSnapList(
-                itemBuilder: (context, index) {
-                  final recipe = recipes[index];
-                  return ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    RecipeDetails(recipe: recipe)));
-                      },
-                      child: SizedBox(
-                        height: 200,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                                height: 230,
-                                width: 250,
-                                child: Image.network(
-                                  recipe.url,
-                                  fit: BoxFit.cover,
-                                )),
-                            Container(
-                              height: 70,
-                              width: 250,
-                              decoration: const BoxDecoration(
-                                  gradient: LinearGradient(
-                                      colors: [Colors.amber, Colors.blue])),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                    child: Text(
-                                  recipe.title,
-                                  style: const TextStyle(fontSize: 18),
-                                )),
-                              ),
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 10, top: 10),
+            child: Text(
+              "Popular",
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ref.watch(recipesProvider).when(
+              data: (recipes) {
+                return SizedBox(
+                  height: 300,
+                  width: double.infinity,
+                  child: ScrollSnapList(
+                    itemBuilder: (context, index) {
+                      final recipe = recipes[index];
+                      return ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(30)),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        RecipeDetails(recipe: recipe)));
+                          },
+                          child: SizedBox(
+                            height: 200,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                    height: 230,
+                                    width: 250,
+                                    child: Image.network(
+                                      recipe.url,
+                                      fit: BoxFit.cover,
+                                    )),
+                                Container(
+                                  height: 70,
+                                  width: 250,
+                                  decoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [Colors.amber, Colors.blue])),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Center(
+                                        child: Text(
+                                      recipe.title,
+                                      style: const TextStyle(fontSize: 18),
+                                    )),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                },
-                itemCount: recipes.length,
-                itemSize: 250,
-                onItemFocus: (index) {},
-                dynamicItemSize: true,
-              ),
-            );
-          },
-          error: (err, stack) => Center(child: Text(err.toString())),
-          loading: () => const Center(
-                child: CircularProgressIndicator(),
-              )),
-    );
+                      );
+                    },
+                    itemCount: recipes.length,
+                    itemSize: 250,
+                    onItemFocus: (index) {},
+                    dynamicItemSize: true,
+                  ),
+                );
+              },
+              error: (err, stack) => Center(child: Text(err.toString())),
+              loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  )),
+        ]);
   }
 }
