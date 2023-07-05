@@ -30,6 +30,5 @@ class AuthController {
    return _authRepository.isUserLoggedIn();
   }
 
-  // Stream? userStatus() => _authRepository.userStatus();
   Stream get userStatus => _authRepository.userStatus;
 }

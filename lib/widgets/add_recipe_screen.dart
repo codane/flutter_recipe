@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_recipe/core/constants/firestore_constants.dart';
 import 'package:flutter_recipe/models/recipe_model.dart';
 import 'package:flutter_recipe/widgets/top_bezier_container.dart';
 
@@ -16,7 +17,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
   final TextEditingController preparationController = TextEditingController();
   final TextEditingController urlController = TextEditingController();
   final recipeCollectionRef = FirebaseFirestore.instance
-      .collection('recipes')
+      .collection(FirestoreConstants.recipesCollection)
       .withConverter<Recipe>(
           fromFirestore: (snapshot, _) => Recipe.fromJson(snapshot.data()!),
           toFirestore: (recipe, _) => recipe.toJson());
@@ -103,14 +104,13 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
           foregroundColor: const Color(0xffF2F3AE),
           child: const Icon(Icons.save),
           onPressed: () {
-            // recipeCollectionRef.add(
-            //   RecipeModel(
-            //       title: titleController.text,
-            //       ingredients: ingredientsController.text,
-            //       preparation: preparationController.text,
-            //       pictureUrl: urlController.text),
-            // );
-            // Navigator.pop(context);
+            final Recipe newRecipe = Recipe(
+              title: titleController.text.trim(), 
+              ingredients: ingredientsController.text.trim(), 
+              preparation: preparationController.text.trim(), 
+              url: urlController.text.trim(),);
+            recipeCollectionRef.add(newRecipe);
+            Navigator.pop(context);
           },
         ),
       ),

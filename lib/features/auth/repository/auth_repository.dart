@@ -13,7 +13,6 @@ final authRepositoryProvider = Provider.autoDispose(
 );
 
 class AuthRepository {
-  // final because they need to be passed to constructor
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
 
@@ -39,19 +38,17 @@ class AuthRepository {
       );
 
      await _users.doc(newUser.uid).set(newUser.toMap()); 
-      print(userCredential.user);
     } catch (e) {
-      print(e);
+      throw Exception(e).toString();
     }
   }
 
   Future<void> loginUser({required String email, required String password}) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+       await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      print(userCredential.user);
     } catch (e) {
-      print(e);
+     throw Exception(e).toString();
     }
   }
 
@@ -67,5 +64,4 @@ class AuthRepository {
   }
 
   Stream<User?> get userStatus => _auth.authStateChanges();
-  //Stream? userStatus() => _auth.authStateChanges();
 }

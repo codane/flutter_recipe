@@ -17,7 +17,7 @@ class Recipe {
   Map<String, Object?> toJson() {
     return {
       'title': title,
-      'ingridients': ingredients,
+      'ingredients': ingredients,
       'preparation': preparation,
       'url': url
     };
