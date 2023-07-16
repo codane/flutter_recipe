@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe/features/db/repository/db_repository.dart';
 import 'package:flutter_recipe/models/recipe_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RecipeDetails extends StatelessWidget {
+class RecipeDetails extends ConsumerWidget {
   const RecipeDetails({Key? key, required this.recipe}) : super(key: key);
 
   final Recipe recipe;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
         child: Scaffold(
       body: Stack(
@@ -48,12 +50,20 @@ class RecipeDetails extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Center(
-                            child: Text(
-                              recipe.title,
-                              style: const TextStyle(
-                                  fontSize: 30, fontStyle: FontStyle.italic),
-                            ),
+                          Row(
+                            children: [
+                              Center(
+                                child: Text(
+                                  recipe.title,
+                                  style: const TextStyle(
+                                      fontSize: 30, fontStyle: FontStyle.italic),
+                                ),
+                              ),
+                              IconButton(onPressed: () {
+                                ref.read(dbRepositoryProvider).deleteRecipe(recipeId: recipe.id);
+                                Navigator.pop(context);
+                              }, icon: const Icon(Icons.delete)),
+                            ],
                           ),
                           const SizedBox(height: 10),
                           const Divider(thickness: 2),

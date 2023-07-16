@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_recipe/core/constants/firestore_constants.dart';
+import 'package:flutter_recipe/features/db/repository/db_repository.dart';
 import 'package:flutter_recipe/models/recipe_model.dart';
 import 'package:flutter_recipe/widgets/top_bezier_container.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddRecipeScreen extends StatefulWidget {
+class AddRecipeScreen extends ConsumerStatefulWidget {
   const AddRecipeScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddRecipeScreen> createState() => _AddRecipeScreenState();
+  ConsumerState<AddRecipeScreen> createState() => _AddRecipeScreenState();
 }
 
-class _AddRecipeScreenState extends State<AddRecipeScreen> {
+class _AddRecipeScreenState extends ConsumerState<AddRecipeScreen> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController ingredientsController = TextEditingController();
   final TextEditingController preparationController = TextEditingController();
@@ -109,7 +111,8 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               ingredients: ingredientsController.text.trim(), 
               preparation: preparationController.text.trim(), 
               url: urlController.text.trim(),);
-            recipeCollectionRef.add(newRecipe);
+            ref.read(dbRepositoryProvider).addNewRecipe(newRecipe: newRecipe);
+            //recipeCollectionRef.add(newRecipe);
             Navigator.pop(context);
           },
         ),
