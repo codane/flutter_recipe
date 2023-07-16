@@ -5,15 +5,15 @@ import 'package:flutter_recipe/models/recipe_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dbRepositoryProvider = Provider.autoDispose(
-  (ref) => DBRepository(
+  (ref) => DbRepository(
     firestore: ref.read(firestoreProvider),
   ),
 );
 
-class DBRepository {
+class DbRepository {
   final FirebaseFirestore _firestore;
 
-  DBRepository({required FirebaseFirestore firestore}) : _firestore = firestore;
+  DbRepository({required FirebaseFirestore firestore}) : _firestore = firestore;
 
   CollectionReference get _recipes =>
       _firestore.collection(FirestoreConstants.recipesCollection);

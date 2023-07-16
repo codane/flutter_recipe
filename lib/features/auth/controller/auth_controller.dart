@@ -18,11 +18,11 @@ class AuthController {
 
   }
 
-  void loginUser({required String email, required String password}) {
+  void loginUser({required String email, required String password}) async {
     _authRepository.loginUser(email: email, password: password);
   }
 
-  void signOut() {
+  void signOut() async {
     _authRepository.signOut();
   }
 

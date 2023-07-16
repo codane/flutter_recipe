@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recipe/features/db/repository/db_repository.dart';
+import 'package:flutter_recipe/features/db/controller/db_controller.dart';
 import 'package:flutter_recipe/models/recipe_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -60,7 +60,7 @@ class RecipeDetails extends ConsumerWidget {
                                 ),
                               ),
                               IconButton(onPressed: () {
-                                ref.read(dbRepositoryProvider).deleteRecipe(recipeId: recipe.id);
+                                ref.read(dbControllerProvider).deleteRecipe(recipeId: recipe.id);
                                 Navigator.pop(context);
                               }, icon: const Icon(Icons.delete)),
                             ],

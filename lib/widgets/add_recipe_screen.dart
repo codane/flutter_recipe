@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_recipe/core/constants/firestore_constants.dart';
-import 'package:flutter_recipe/features/db/repository/db_repository.dart';
+import 'package:flutter_recipe/features/db/controller/db_controller.dart';
 import 'package:flutter_recipe/models/recipe_model.dart';
 import 'package:flutter_recipe/widgets/top_bezier_container.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,11 +16,6 @@ class _AddRecipeScreenState extends ConsumerState<AddRecipeScreen> {
   final TextEditingController ingredientsController = TextEditingController();
   final TextEditingController preparationController = TextEditingController();
   final TextEditingController urlController = TextEditingController();
-  final recipeCollectionRef = FirebaseFirestore.instance
-      .collection(FirestoreConstants.recipesCollection)
-      .withConverter<Recipe>(
-          fromFirestore: (snapshot, _) => Recipe.fromJson(snapshot.data()!),
-          toFirestore: (recipe, _) => recipe.toJson());
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +104,7 @@ class _AddRecipeScreenState extends ConsumerState<AddRecipeScreen> {
               ingredients: ingredientsController.text.trim(), 
               preparation: preparationController.text.trim(), 
               url: urlController.text.trim(),);
-            ref.read(dbRepositoryProvider).addNewRecipe(newRecipe: newRecipe);
+            ref.read(dbControllerProvider).addNewRecipe(newRecipe: newRecipe);
             //recipeCollectionRef.add(newRecipe);
             Navigator.pop(context);
           },
