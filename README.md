@@ -1,16 +1,11 @@
 # flutter_recipe
 
-A new Flutter project.
+A Flutter app to save recipes to Firebase Firestore cloud database.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+ 
+ ![](recipe1.png)
+ ![](recipe2.png)
+ ![](recipe3.png)
+ ![](recipe4.png)
+ ![](recipe5.png)

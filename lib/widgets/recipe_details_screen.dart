@@ -51,13 +51,12 @@ class RecipeDetails extends ConsumerWidget {
                           ),
                           const SizedBox(height: 20),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Center(
-                                child: Text(
-                                  recipe.title,
-                                  style: const TextStyle(
-                                      fontSize: 30, fontStyle: FontStyle.italic),
-                                ),
+                              Text(
+                                recipe.title,
+                                style: const TextStyle(
+                                    fontSize: 30, fontStyle: FontStyle.italic),
                               ),
                               IconButton(onPressed: () {
                                 ref.read(dbControllerProvider).deleteRecipe(recipeId: recipe.id);
